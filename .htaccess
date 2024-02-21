@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Handle 404 with Next.js custom error page
+ErrorDocument 404 /404.html
+
+# Serve static assets directly
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Route all other requests to index.html for Next.js to handle
+RewriteRule ^ index.html [QSA,L]
